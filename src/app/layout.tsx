@@ -10,6 +10,9 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "DAO",
   description: "App to cast your vote through Ethereum",
+  icons: {
+    icon: "/images/logo.webp", 
+  },
 };
 
 export default function RootLayout({
@@ -19,12 +22,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`${inter.className} bg-gradient-to-r from-[#8a3aee] to-[#240046] min-h-screen`}>
         <Web3Modal>
-          <div className=" flex flex-col justify-between items-stretch h-screen">
-            <Header/>
-            {children}
-            <Footer/>
+          <div className="flex flex-col min-h-screen">
+            <Header />
+            <main className="flex-grow flex flex-col justify-center items-center w-full">
+              {children}
+            </main>
+            <Footer />
           </div>
         </Web3Modal>
       </body>

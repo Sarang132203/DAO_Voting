@@ -1,18 +1,31 @@
-"use client";
+'use client';
 
 import React from 'react';
-import { useMediaQuery } from 'react-responsive';
 import ConnectButton from './ConnectButton';
-import { useAccount } from 'wagmi';
 
 const Header = () => {
-  const { isConnected } = useAccount();
-  const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
-
   return (
-    <div className="p-8 bg-zinc-50 flex items-center h-20 border-b border-black">
-      <div className="text-4xl font-bold text-black ml-4">DAO</div>
-      <div className="ml-auto mr-4">
+    <div 
+      className="flex items-center justify-between h-16 px-4" 
+      style={{
+        backgroundImage: 'linear-gradient(to right,#8a3aee, #240046)',
+        color: 'white',
+      }}
+    >
+      
+      <div className="flex items-center space-x-4">
+        
+        <img 
+          src="/images/logo.webp" 
+          alt="Logo"
+          className="h-8 w-auto" 
+        />
+        
+        <div className="text-4xl font-bold">DAO</div>
+      </div>
+
+      
+      <div>
         <ConnectButton />
       </div>
     </div>
