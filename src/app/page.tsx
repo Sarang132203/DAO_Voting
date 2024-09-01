@@ -1,90 +1,59 @@
-"use client";
-
-import React, { useState, useRef, useEffect } from 'react';
+'use client';
+import React from 'react';
 import { useRouter } from 'next/navigation';
-import PlatformInfo from '@/components/shared/PlatformInfo';
-import ProposalsList from '@/components/shared/ProposalsList';
-import { Box } from '@mui/material';
-import { useAccount } from 'wagmi';
 
 const Home = () => {
-  const { isConnected } = useAccount();
-
   const router = useRouter();
-  const proposalsRef = useRef(null);
-  const [searchQuery, setSearchQuery] = useState('');
 
-
-  
-  useEffect(() => {
-    if (isConnected) {
-      router.push('/memberDashboard')
-    } else {
-      router.push('/');
-    }
-  });
-
-  
-  const handleProposalsClick = () => {
-    proposalsRef.current.scrollIntoView({ behavior: 'smooth' });
+  const handleCreateOrganization = () => {
+    router.push('/CreateOrganization'); 
   };
 
-  const proposals = [
-    {
-      title: "Proposal 1",
-      description: "Improve community outreach",
-      date: "2023-07-01",
-      votes: "120",
-      time: "5 days remaining"
-    },
-    {
-      title: "Proposal 2",
-      description: "Fund new development projects",
-      date: "2023-07-10",
-      votes: "85",
-      time: "3 days remaining"
-    },
-    {
-      title: "Proposal 3",
-      description: "Implement new voting mechanisms",
-      date: "2023-07-15",
-      votes: "50",
-      time: "7 days remaining"
-    },
-    {
-      title: "Proposal 4",
-      description: "Improve community outreach",
-      date: "2023-07-01",
-      votes: "120",
-      time: "5 days remaining"
-    },
-    {
-      title: "Proposal 5",
-      description: "Fund new development projects",
-      date: "2023-07-10",
-      votes: "85",
-      time: "3 days remaining"
-    },
-    {
-      title: "Proposal 6",
-      description: "Implement new voting mechanisms",
-      date: "2023-07-15",
-      votes: "50",
-      time: "7 days remaining"
-    }
-  ];
+  const handleMyOrganizations = () => {
+    router.push('/MyOrganization'); 
+  };
 
   return (
-    <>
+    <div className="grid grid-cols-1 md:grid-cols-2 max-w-6xl mx-auto gap-10 items-center">
       
-      <main className="flex flex-col items-center bg-cover bg-center">
-        <PlatformInfo onProposalsClick={handleProposalsClick} />
-        <Box ref={proposalsRef} className="w-full p-8">
-          <ProposalsList proposals={proposals} searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
-        </Box>
-      </main>
-      
-    </>
+      <div className="p-8 text-center md:text-left">
+        <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
+          Empower Your Vote
+        </h1>
+        <p className="text-md md:text-lg text-gray-200 mb-8">
+          Unlock the power of decentralized governance with our intuitive platform. Every vote matters, and together, we shape the future of decision-making. Join us in this journey toward transparent, collective governance.
+        </p>
+        <div className="flex flex-col sm:flex-row justify-center md:justify-start items-center gap-4">
+          <button 
+            className="px-6 py-3 bg-gradient-to-r from-pink-500 to-yellow-500 text-black font-semibold rounded-lg shadow-lg hover:scale-105 transition-transform"
+            aria-label="Create an Organization"
+            onClick={handleCreateOrganization}
+          >
+            Create an Organization
+          </button>
+          <button 
+            className="px-6 py-3 border-2 border-white text-white font-semibold rounded-lg shadow-lg hover:bg-white hover:text-black transition-colors hover:scale-105 transition-transform"
+            aria-label="My Organizations"
+            onClick={handleMyOrganizations}
+          >
+            My Organizations
+          </button>
+        </div>
+      </div>
+
+      {/* Image Section */}
+      <div className="image-container p-8">
+        <img
+          // src="/images/dao.jpg" //
+          alt=""
+          className="image w-full h-auto max-w-md mx-auto"
+          style={{ 
+            transform: 'rotateX(0deg)', 
+            transition: 'transform 0.3s ease-in-out', 
+          }}
+        />
+      </div>
+    </div>
   );
 };
 

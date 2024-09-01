@@ -2,14 +2,18 @@ import React from 'react';
 
 const Footer = () => {
   return (
-    <footer className="bg-zinc-50 p-4 flex items-center size-full h-16 border-t border-black">
-      <div className="container mx-auto text-center">
-        <div className="space-x-4">
-          <a href="#" className="text-gray-900 hover:text-red-600">Terms of Service</a>
-          <a href="#" className="text-gray-900 hover:text-red-600">Privacy Policy</a>
-          <a href="#" className="text-gray-900 hover:text-red-600">Cookie Policy</a>
-        </div>
-      </div>
+    <footer 
+      className="flex items-center justify-center h-16 px-4" 
+      style={{
+        backgroundImage: 'linear-gradient(to right,#8a3aee, #240046)', 
+        color: 'white',
+      }}
+    >
+      {/* <div className="space-x-4 text-center">
+        <a href="#" className="hover:text-red-600">Terms of Service</a>
+        <a href="#" className="hover:text-red-600">Privacy Policy</a>
+        <a href="#" className="hover:text-red-600">Cookie Policy</a>
+      </div> */}
     </footer>
   );
 };
